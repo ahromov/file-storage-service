@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.0.5:5432/ubos-hr
+    username: admin9971
+    password: 'wUsvZTFM'
+    driver-class-name: org.postgresql.Driver
+    dbcp2:
+      default-schema: public
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 20MB
+      max-request-size: 215MB
+  liquibase:
+    default-schema: public
+    change-log: classpath:db/migrations/changelog.xml
+    enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    root: info
+  file:
+    name: ./log/app.log
+server:
+  port: 8482
+scheduling:
+  cron: "* */100 * * * *"

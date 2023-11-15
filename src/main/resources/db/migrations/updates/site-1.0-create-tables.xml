@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="create-table-file" author="ahromov">
+        <sql>
+            CREATE TABLE IF NOT EXISTS file
+            (
+                file_id            varchar NOT NULL DEFAULT nextval('file_file_id_seq'::regclass),
+                file_name          varchar NULL,
+                file_content_type  varchar NULL,
+                file_creation_date timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+                "size"             int8 NULL,
+                file_content       oid     NOT NULL,
+                CONSTRAINT file_pk PRIMARY KEY (file_id)
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>
